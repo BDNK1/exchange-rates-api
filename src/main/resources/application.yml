@@ -1,4 +1,9 @@
 spring:
+  r2dbc:
+    name: exchange
+    url: r2dbc:postgresql://localhost:15432/exchange
+    username: app_local
+    password: local
   liquibase:
     enabled: true
     change-log: classpath*:/db/changelog/db.changelog-master.yaml
@@ -21,3 +26,6 @@ spring:
     url: r2dbc:postgresql://postgres:5432/exchange
     username: app_local
     password: local
+  liquibase:
+    enabled: true
+    change-log: classpath*:/db/changelog/db.changelog-master.yaml
