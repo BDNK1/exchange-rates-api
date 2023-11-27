@@ -1,0 +1,23 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath*:/db/changelog/db.changelog-master.yaml
+
+springdoc:
+  swagger-ui:
+    path: /system/swagger.html
+
+exchange-rate-api:
+  api-key: "3825f2258f9b1a5b0f181f86dea42079"
+  url: "http://api.exchangeratesapi.io"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  r2dbc:
+    name: exchange
+    url: r2dbc:postgresql://postgres:5432/exchange
+    username: app_local
+    password: local

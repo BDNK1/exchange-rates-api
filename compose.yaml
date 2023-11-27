@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=exchange'
+      - 'POSTGRES_PASSWORD=local'
+      - 'POSTGRES_USER=app_local'
+    ports:
+      - '15432:5432'
+    volumes:
+      - exchange-postgres-data:/var/lib/postgresql/data
+  backend:
+    image: tranzzo/exchange:0.0.1
+    ports:
+      - '8080:8080'
+    profiles:
+      - local
+    environment:
+      - 'SPRING_PROFILES_ACTIVE=local'
+
+volumes:
+  exchange-postgres-data:
