@@ -69,11 +69,11 @@ class ExchangeRateServiceTest {
 
     @Test
     void updateExchangeRates() {
-        Map<String, BigDecimal> rates = Map.of("USD", BigDecimal.TWO, "UAH", BigDecimal.TEN);
+        Map<String, BigDecimal> rates = Map.of("USD", BigDecimal.valueOf(2), "UAH", BigDecimal.TEN);
         long timestamp = 123456789L;
         var randomExchangeRateResponse = new ExchangeRateApiResponse(true, timestamp, "EUR", rates);
         List<ExchangeRate> allCombinations = List.of(
-                new ExchangeRate(CurrencyCode.EUR, CurrencyCode.USD, BigDecimal.TWO, timestamp),
+                new ExchangeRate(CurrencyCode.EUR, CurrencyCode.USD, BigDecimal.valueOf(2), timestamp),
                 new ExchangeRate(CurrencyCode.EUR, CurrencyCode.UAH, BigDecimal.TEN, timestamp),
                 new ExchangeRate(CurrencyCode.USD, CurrencyCode.EUR, BigDecimal.valueOf(0.5).setScale(10), timestamp),
                 new ExchangeRate(CurrencyCode.USD, CurrencyCode.UAH, BigDecimal.valueOf(5).setScale(10), timestamp),
